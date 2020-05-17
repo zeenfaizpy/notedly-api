@@ -19,5 +19,13 @@ module.exports = {
         new: true
       }
     );
+  },
+  deleteNote: async (parent, args, context) => {
+    try {
+      await context.models.Note.findOneAndRemove({ _id: args.id });
+      return true;
+    } catch (err) {
+      return false;
+    }
   }
 };
